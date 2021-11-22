@@ -24,11 +24,11 @@ export default function TaskDetail({ task, error }) {
     }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     setIsDeleting(true);
-    deleteTask();
+    await deleteTask();
+    await push("/");
     close();
-    push("/");
   };
 
   if (error && error.statusCode)
