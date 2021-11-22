@@ -55,10 +55,11 @@ const HomePage = ({ tasks }) => {
 export default HomePage;
 
 export const getServerSideProps = async (ctx) => {
-  const url =
-    "https://mynext-mongodb-crud-" +
-    process.env.URL_DEPLOYMENT +
-    "-rroblesgo.vercel.app/";
+  // const url =
+  //   "https://mynext-mongodb-crud-" +
+  //   process.env.URL_DEPLOYMENT +
+  //   "-rroblesgo.vercel.app/";
+  const url = "https://mynext-mongodb-crud.vercel.app/";
   // const url = "http://localhost:3000/";
   const res = await fetch(url + "api/tasks");
   //console.log("getServerSideProps:", res);
