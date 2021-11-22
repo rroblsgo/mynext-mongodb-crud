@@ -2,6 +2,8 @@ import { Form, Grid, Button } from "semantic-ui-react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
+const url = process.env.URL;
+
 export default function TaskFormPage() {
   const [newTask, setNewTask] = useState({
     title: "",
@@ -37,7 +39,6 @@ export default function TaskFormPage() {
 
   const createTask = async () => {
     try {
-      const url = "https://mynext-mongodb-crud.vercel.app/";
       await fetch(url + "api/tasks", {
         method: "POST",
         headers: {
@@ -52,7 +53,6 @@ export default function TaskFormPage() {
 
   const updateTask = async () => {
     try {
-      const url = "https://mynext-mongodb-crud.vercel.app/";
       await fetch(`${url}api/tasks/${query.id}`, {
         method: "PUT",
         headers: {
@@ -70,7 +70,6 @@ export default function TaskFormPage() {
   };
 
   const getTask = async () => {
-    const url = "https://mynext-mongodb-crud.vercel.app/";
     const res = await fetch(`${url}api/tasks/${query.id}`);
     const data = await res.json();
     setNewTask({ title: data.title, description: data.description });

@@ -3,6 +3,8 @@ import { Grid, Button, Confirm, Loader } from "semantic-ui-react";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
+const url = process.env.URL;
+
 export default function TaskDetail({ task, error }) {
   const [confirm, setConfirm] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -14,7 +16,6 @@ export default function TaskDetail({ task, error }) {
   const deleteTask = async () => {
     const { id } = query;
     try {
-      const url = "https://mynext-mongodb-crud.vercel.app/";
       await fetch(`${url}api/tasks/${id}`, {
         method: "DELETE",
       });
@@ -63,7 +64,6 @@ export default function TaskDetail({ task, error }) {
 }
 
 export async function getServerSideProps({ query: { id } }) {
-  const url = "https://mynext-mongodb-crud.vercel.app/";
   const res = await fetch(`${url}api/tasks/${id}`);
   if (res.status === 200) {
     const task = await res.json();

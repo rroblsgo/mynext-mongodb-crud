@@ -1,6 +1,8 @@
 import { Container, Button, Grid, Card } from "semantic-ui-react";
 import { useRouter } from "next/router";
 //import styles from "styles/Home.module.css";
+const url = process.env.URL;
+
 const HomePage = ({ tasks }) => {
   //console.log("HomePage:", tasks);
   const router = useRouter();
@@ -55,8 +57,6 @@ const HomePage = ({ tasks }) => {
 export default HomePage;
 
 export const getServerSideProps = async (ctx) => {
-  const url = "https://mynext-mongodb-crud.vercel.app/";
-  // const url = "http://localhost:3000/";
   const res = await fetch(url + "api/tasks");
   //console.log("getServerSideProps:", res);
   const tasks = await res.json();
