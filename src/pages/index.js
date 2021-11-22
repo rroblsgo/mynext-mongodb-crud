@@ -55,7 +55,9 @@ const HomePage = ({ tasks }) => {
 export default HomePage;
 
 export const getServerSideProps = async (ctx) => {
-  const res = await fetch("http://localhost:3000/api/tasks");
+  const url = "https://mynext-mongodb-crud-ghfdn2x18-rroblesgo.vercel.app/";
+  // const url = "http://localhost:3000/";
+  const res = await fetch(url + "api/tasks");
   //console.log("getServerSideProps:", res);
   const tasks = await res.json();
   //console.log("getServerSideProps:", tasks);
