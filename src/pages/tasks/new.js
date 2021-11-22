@@ -37,7 +37,8 @@ export default function TaskFormPage() {
 
   const createTask = async () => {
     try {
-      await fetch("http://localhost:3000/api/tasks", {
+      const url = "https://mynext-mongodb-crud.vercel.app/";
+      await fetch(url + "api/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +52,8 @@ export default function TaskFormPage() {
 
   const updateTask = async () => {
     try {
-      await fetch(`http://localhost:3000/api/tasks/${query.id}`, {
+      const url = "https://mynext-mongodb-crud.vercel.app/";
+      await fetch(`${url}api/tasks/${query.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +70,8 @@ export default function TaskFormPage() {
   };
 
   const getTask = async () => {
-    const res = await fetch(`http://localhost:3000/api/tasks/${query.id}`);
+    const url = "https://mynext-mongodb-crud.vercel.app/";
+    const res = await fetch(`${url}api/tasks/${query.id}`);
     const data = await res.json();
     setNewTask({ title: data.title, description: data.description });
   };

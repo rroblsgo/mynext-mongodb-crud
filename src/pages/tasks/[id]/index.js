@@ -14,7 +14,8 @@ export default function TaskDetail({ task, error }) {
   const deleteTask = async () => {
     const { id } = query;
     try {
-      await fetch(`http://localhost:3000/api/tasks/${id}`, {
+      const url = "https://mynext-mongodb-crud.vercel.app/";
+      await fetch(`${url}api/tasks/${id}`, {
         method: "DELETE",
       });
     } catch (error) {
@@ -62,7 +63,8 @@ export default function TaskDetail({ task, error }) {
 }
 
 export async function getServerSideProps({ query: { id } }) {
-  const res = await fetch(`http://localhost:3000/api/tasks/${id}`);
+  const url = "https://mynext-mongodb-crud.vercel.app/";
+  const res = await fetch(`${url}api/tasks/${id}`);
   if (res.status === 200) {
     const task = await res.json();
     return {
